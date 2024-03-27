@@ -11,6 +11,9 @@ from django.contrib import messages
 # import forms from user_app
 from .forms import UserRegisterForm
 
+# import logout
+from django.contrib.auth import logout
+
 # login required for profile view
 # from django.contrib.auth.decorators import login_required
 
@@ -44,7 +47,7 @@ def register(request):
     return render(request, 'register.html', {'form': form})
 
 
-def logout(request):
+def logout_view(request):
     """
     View function for user logout.
 

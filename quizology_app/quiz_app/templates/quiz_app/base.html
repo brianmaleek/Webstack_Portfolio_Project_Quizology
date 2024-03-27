@@ -27,8 +27,6 @@
   </head>
   <body>
     <header class="site-header">
-
-
       <nav class="navbar navbar-expand-lg navbar-dark bg-steel fixed-top">
         <div class="container-fluid">
           <a class="navbar-brand mr-4" href="{% url 'quiz_app-home' %}"
@@ -55,20 +53,26 @@
               >
             </div>
             <!-- Navbar Right Side -->
-            <div class="navbar-nav">
+            <div class="navbar-nav ms-auto">
               <a class="nav-link" href="#">Login</a>
-              <a class="nav-link" href="#">Register</a>
+              <a class="nav-link" href="{% url 'register' %}">Register</a>
             </div>
           </div>
         </div>
       </nav>
-
-
-
     </header>
     <main role="main" class="container">
       <div class="row">
-        <div class="col-md-8">{% block content %}{% endblock %}</div>
+        <div class="col-md-8">
+          {% if messages %}
+            {% for message in messages %}
+              <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+              </div>
+            {% endfor %}
+          {% endif %}
+          {% block content %}{% endblock %}
+        </div>
       </div>
     </main>
     <!-- Option 1: Bootstrap Bundle with Popper -->

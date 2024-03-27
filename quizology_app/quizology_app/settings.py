@@ -133,3 +133,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 ## crispy app settings
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
+
+# login redirect for new users to go to homepage instead of default profile page
+LOGIN_REDIRECT_URL = 'quiz_app-home'
+LOGIN_URL = 'login'

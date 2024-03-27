@@ -43,6 +43,22 @@ def register(request):
     # render the registration form, passing the form instance
     return render(request, 'register.html', {'form': form})
 
+
+def logout(request):
+    """
+    View function for user logout.
+
+    Args:
+        request: The HTTP request object.
+
+    Returns:
+        A rendered HTML template with the logout form.
+
+    """
+    logout(request)
+    return render(request, 'logout.html')
+
+
 """ @login_required
 def profile(request):
     return render(request, 'user_app/profile.html') """

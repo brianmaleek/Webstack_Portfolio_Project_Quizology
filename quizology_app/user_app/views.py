@@ -15,7 +15,7 @@ from .forms import UserRegisterForm
 from django.contrib.auth import logout
 
 # login required for profile view
-# from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -62,6 +62,6 @@ def logout_view(request):
     return render(request, 'logout.html')
 
 
-""" @login_required
+@login_required
 def profile(request):
-    return render(request, 'user_app/profile.html') """
+    return render(request, 'profile.html')

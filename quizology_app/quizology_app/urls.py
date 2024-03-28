@@ -39,10 +39,11 @@ def create_urlpatterns():
         path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
 
         # User logout URL pattern using Django's built-in authentication view
-        path('logout/', auth_views.LogoutView.as_view(template_name='logout.html'), name='logout'),
+        # path('logout/', auth_views.LogoutView.as_view(template_name='logout.html'), name='logout'),
+        path('logout/', user_views.logout_view, name='logout'),
 
         # User profile URL pattern
-        # path('profile/', user_views.profile, name='profile'),
+        path('profile/', user_views.profile, name='profile'),
 
         # Include URLs from the quiz app
         path('', include('quiz_app.urls')),  # Empty string matches the root URL

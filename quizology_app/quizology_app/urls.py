@@ -43,7 +43,7 @@ def create_urlpatterns():
         path('logout/', user_views.logout_view, name='logout'),
 
         # User profile URL pattern
-        # path('profile/', user_views.profile, name='profile'),
+        path('profile/', user_views.profile, name='profile'),
 
         # Include URLs from the quiz app
         path('', include('quiz_app.urls')),  # Empty string matches the root URL

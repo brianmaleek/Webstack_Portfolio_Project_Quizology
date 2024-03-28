@@ -136,4 +136,5 @@ CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
 # login redirect for new users to go to homepage instead of default profile page
 LOGIN_REDIRECT_URL = 'quiz_app-home'
+# login url for new users to go to login page instead of default profile page
 LOGIN_URL = 'login'

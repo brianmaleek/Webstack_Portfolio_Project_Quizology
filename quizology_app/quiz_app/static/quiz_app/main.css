@@ -1,84 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Rubik+Scribble&display=swap');
+
+
 body {
-    background: #fafafa;
-    color: #333333;
-    margin-top: 5rem;
+    background-color: #F4F4F9;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Cdefs%3E%3ClinearGradient id='a' x1='0' x2='0' y1='1' y2='0' gradientTransform='rotate(283,0.5,0.5)'%3E%3Cstop offset='0' stop-color='%236457A6'/%3E%3Cstop offset='1' stop-color='%230F573E'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' x1='0' x2='0' y1='0' y2='1' gradientTransform='rotate(115,0.5,0.5)'%3E%3Cstop offset='0' stop-color='%23E3D07D'/%3E%3Cstop offset='1' stop-color='%23D1AC00'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg fill='%23FFF' fill-opacity='0' stroke-miterlimit='10'%3E%3Cg stroke='url(%23a)' stroke-width='7.919999999999999'%3E%3Cpath transform='translate(-66.15 5.6000000000000005) rotate(0.9500000000000002 1409 581) scale(0.9784189999999999)' d='M1409 581 1450.35 511 1490 581z'/%3E%3Ccircle stroke-width='2.64' transform='translate(-73.5 48) rotate(5.9 800 450) scale(1.007872)' cx='500' cy='100' r='40'/%3E%3Cpath transform='translate(15.999999999999998 -67.5) rotate(50.5 401 736) scale(1.007872)' d='M400.86 735.5h-83.73c0-23.12 18.74-41.87 41.87-41.87S400.86 712.38 400.86 735.5z'/%3E%3C/g%3E%3Cg stroke='url(%23b)' stroke-width='2.4'%3E%3Cpath transform='translate(288 -2.200000000000001) rotate(0.5500000000000003 150 345) scale(0.9854729999999999)' d='M149.8 345.2 118.4 389.8 149.8 434.4 181.2 389.8z'/%3E%3Crect stroke-width='5.28' transform='translate(-98.5 -128.5) rotate(50.39999999999999 1089 759)' x='1039' y='709' width='100' height='100'/%3E%3Cpath transform='translate(-192.8 55.2) rotate(8.400000000000002 1400 132) scale(0.915)' d='M1426.8 132.4 1405.7 168.8 1363.7 168.8 1342.7 132.4 1363.7 96 1405.7 96z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    background-attachment: fixed;
+    background-size: cover;
+    
+    margin-top: 10rem;
+    font-family: "Raleway", sans-serif;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    color: #444444;
+    color: #FFECD1;
   }
   
   ul {
     margin: 0;
   }
-  
+
   .bg-steel {
-    background-color: #5f788a;
+    background-color: #242423;
   }
   
   .site-header .navbar-nav .nav-link {
-    color: #cbd5db;
+    color: #F4F4F9;
   }
   
   .site-header .navbar-nav .nav-link:hover {
-    color: #ffffff;
+    color: #F4F4F9;
   }
   
   .site-header .navbar-nav .nav-link.active {
     font-weight: 500;
   }
   
-  .content-section {
-    background: #ffffff;
-    padding: 10px 20px;
-    border: 1px solid #dddddd;
-    border-radius: 3px;
-    margin-bottom: 20px;
+ /* login */
+
+  .login-container {
+    background-color: #F4F4F9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 1rem;
+    padding: 2rem 1rem;
+    width: 600px;
+  }
+
+  .login-container h2 {
+    color: #242423;
+    font-size: 2rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  legend {
+    color: #242423;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+  }
+ 
+
+  /* HOME STYLES */
+
+
+  .quizologytitle {
+    font-family: "Raleway", sans-serif;
+      font-size: 3rem;
+      font-weight: 900;
+      color: #242423;
+  }
+
+  #quizology{
+    font-family: 'Rubik Scribble', sans-serif !important;
+  
+      font-size: 3.5rem;
+      color: #D1AC00;
+  }
+  .btn-start {
+    background-color: #D1AC00;
+    color: #F4F4F9;
+    border: none;
+   
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .btn-start:hover {
+    background-color: #F4F4F9;
   }
   
-  .article-title {
-    color: #444444;
+  .btn-score {
+    background-color: #0F573E;
+    color: #F4F4F9;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 5px;
+    transition: background-color 0.3s;
   }
-  
-  a.article-title:hover {
-    color: #428bca;
-    text-decoration: none;
+
+  .btn-score:hover {
+    background-color: #F4F4F9;
   }
-  
-  .article-content {
-    white-space: pre-line;
+
+  .home-p{
+    font-family: "Raleway", sans-serif;
+    font-size: 1rem;
+    color: #242423;
+    font-weight: 900;
   }
-  
-  .article-img {
-    height: 65px;
-    width: 65px;
-    margin-right: 16px;
-  }
-  
-  .article-metadata {
-    padding-bottom: 1px;
-    margin-bottom: 4px;
-    border-bottom: 1px solid #e3e3e3
-  }
-  
-  .article-metadata a:hover {
-    color: #333;
-    text-decoration: none;
-  }
-  
-  .article-svg {
-    width: 25px;
-    height: 25px;
-    vertical-align: middle;
-  }
-  
-  .account-img {
-    height: 125px;
-    width: 125px;
-    margin-right: 20px;
-    margin-bottom: 16px;
-  }
-  
-  .account-heading {
-    font-size: 2.5rem;
-  }
+
+

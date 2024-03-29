@@ -1,0 +1,29 @@
+{% extends "quiz_app/base.html" %} {% block content %}
+{% load crispy_forms_tags %}
+
+    <div class="container login-container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <div class="content-section">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <fieldset class="form-group">
+                            <legend class="border-bottom mb-4">Select Quiz Category</legend>
+                            {{ form|crispy }}
+                        </fieldset>
+                        
+                        <div class="form-group">
+                            <button class="btn btn-score btn-sm" type="submit">Start Quiz</button>
+                        </div>
+                        <br>
+                    </form>
+                    
+                </div>
+
+            </div>
+            <div class="col-md-2"></div>     
+    </div>
+    
+    </div>
+{% endblock content %}

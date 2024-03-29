@@ -1,0 +1,30 @@
+{% extends 'quiz_app/base.html' %}
+
+{% block content %}
+
+
+<div class=" text-center mt-5 score">
+    <h1 class="quizologytitle">Quiz Score</span>  🎉</h1>
+
+    {% if score < 10 %}
+        <h2> Keep Practicing</h2>
+        
+    {% else %}
+        <h2>Congratulations!!!</h2>
+    {% endif %}
+
+    <p>You have completed the quiz. Here is your score:</p>
+
+    <h3>{{ score }}/20  </h3>
+
+    {% if score < 10 %}
+        
+        <p>Oh no! You scored less than 10. Keep practicing! 💪</p>
+    {% else %}
+        <p>Well done! Keep up the good work! 🎉👏</p>
+    {% endif %}
+    
+</div>
+
+
+{% endblock %}

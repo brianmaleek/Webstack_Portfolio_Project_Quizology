@@ -47,7 +47,7 @@ class Answer(models.Model):
     
 class UserQuizResult(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
+    quiz_category = models.TextField(default='General Knowledge')
     score = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
     def __str__(self):

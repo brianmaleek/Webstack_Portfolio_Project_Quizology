@@ -20,12 +20,21 @@ class QuizCategoryForm(forms.Form):
 class QuizAnswerForm(forms.Form):
     def __init__(self, *args, **kwargs):
         self.questions = kwargs.pop('questions', [])
-        super(QuizAnswerForm, self).__init__(*args, **kwargs)
         
+        super(QuizAnswerForm, self).__init__(*args, **kwargs)
         for i, question in enumerate(self.questions):
-            choices = [(f'incorrect_{i}', answer) for i, answer in enumerate(question['incorrect_answers'])] + [('correct', question['correct_answer'])]
             self.fields[f'answer_{i}'] = forms.ChoiceField(
-                choices=choices,
-                widget=forms.RadioSelect(),
-                label=question['question']
-            )
+                widget=forms.RadioSelect,
+                label=question['question'], 
+                choices=[('correct', question['correct_answer'])] + [(f'incorrect_{i}', incorrect_answer) 
+                                                                     for i, incorrect_answer in enumerate(question['incorrect_answers'])])
+              
+    def get_score(self):
+        score = 0
+        for i, question in enumerate(self.questions):
+            correct_answer = question['correct_answer']
+            user_answer = self.cleaned_data[f'answer_{i}']
+            print(user_answer)
+            if user_answer == 'correct':
+                score += 1
+        return score

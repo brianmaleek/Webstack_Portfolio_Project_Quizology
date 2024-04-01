@@ -27,6 +27,8 @@ def quiz_catergory_list(request):
     '''
     if request.method == 'POST':
         form = QuizCategoryForm(request.POST)
+        
+        
       
         if form.is_valid():
             category_id = form.cleaned_data['category_id']  
@@ -40,33 +42,40 @@ def quiz_catergory_list(request):
 def display_quiz(request, category_id):
     '''
         This view is used to display the quiz questions
+    ''' 
+
+    response = requests.get(f'https://opentdb.com/api.php?amount=10&category={category_id}&type=multiple')
+    data = response.json()
+    questions = data['results']
+    
+    # form = QuizAnswerForm(questions=questions)
+    context = {
+        'questions': questions
+    }
+    return render(request, 'quiz_app/quiz_questions.html', context)
+
+
+
+def getUserScore(request):
     '''
-       
+        This view is used to display the user's score
+    '''
     if request.method == 'POST':
-        form = QuizAnswerForm(request.POST)
-        print(form)
-        if form.is_valid():
-            score = 0
-            for i, question in enumerate(form.questions):
-                answer = form.cleaned_data[f'answer_{i}']
-                print(answer)
-                if answer == 'correct':
-                    score += 1
-            return render(request, 'quiz_app/score.html', {'score': score})
-        
-    # Fetch quiz questions from the API
-    else:
-        response = requests.get(f'https://opentdb.com/api.php?amount=5&category={category_id}&type=multiple')
-        data = response.json()
-        questions = []
-        for question in data['results']:
-            questions.append({
-                'question': question['question'],
-                'correct_answer': question['correct_answer'],
-                'incorrect_answers': question['incorrect_answers']
-            })
-        questions.append(question)
-        print(questions)
-        
-        form = QuizAnswerForm(questions=questions)
-    return render(request, 'quiz_app/quiz_questions.html', {'form': form})
+
+        print(request.POST)
+        score = 0
+       
+        category = request.POST.get('category')
+        print(category)
+        for key, value in request.POST.items():
+           if key.startswith('question_'):
+               question_id = key.split('_')[1]
+               if request.POST.get(f'question_{question_id}') == request.POST.get(f'question_{question_id}_correct_answer'):
+                  score += 1
+        length = len(request.POST) - 1
+        # store the user's score for the api generated quiz
+        user = User.objects.get(username=request.user)
+        user_score = UserQuizResult(user=user, quiz_category=category, score=score)
+        half_length = length / 2
+
+        return render(request, 'quiz_app/score.html', {'score': score, 'length': length, 'half_length': half_length})

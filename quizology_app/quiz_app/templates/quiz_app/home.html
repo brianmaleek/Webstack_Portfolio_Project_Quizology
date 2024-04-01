@@ -10,7 +10,7 @@
                 <p class="home-p">Challenge your knowledge with our interactive quizzes covering a wide range of topics. 🧠</p>
                 <p  class="home-p">Choose a category and difficulty level to get started! 🚀</p>
                 <a href="{% url 'quiz_category_list'%}" class="btn btn-start btn-md">Start Quiz 🎮</a>
-                <a href="" class="btn btn-score btn-md">View High Scores 🏆</a>
+                <a href="{% url 'scoreboard' %}" class="btn btn-score btn-md">View High Scores 🏆</a>
             </div>
        
 {% endblock %}

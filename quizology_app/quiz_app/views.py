@@ -65,10 +65,9 @@ def getUserScore(request):
         print(request.POST)
         score = 0
        
-        category = request.POST.get('category')
-        print(category)
+        category = "General Knowledge"
         for key, value in request.POST.items():
-           if key.startswith('question_'):
+            if key.startswith('question_'):
                question_id = key.split('_')[1]
                if request.POST.get(f'question_{question_id}') == request.POST.get(f'question_{question_id}_correct_answer'):
                   score += 1
@@ -76,6 +75,21 @@ def getUserScore(request):
         # store the user's score for the api generated quiz
         user = User.objects.get(username=request.user)
         user_score = UserQuizResult(user=user, quiz_category=category, score=score)
+        user_score.save()
         half_length = length / 2
 
         return render(request, 'quiz_app/score.html', {'score': score, 'length': length, 'half_length': half_length})
+    
+
+def leaderboard(request):
+    '''
+        This view is used to display the highest score
+    '''
+    scores = UserQuizResult.objects.all().order_by('-score')[:10]
+    context = {
+        'scores': scores
+    }
+    
+    
+
+    return render(request, 'quiz_app/leader_board.html', context)

@@ -51,5 +51,5 @@ class UserQuizResult(models.Model):
     score = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
     def __str__(self):
-        return self.score
+        return self.user.username + ' - ' + self.quiz_category
     

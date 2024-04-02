@@ -1,22 +1,35 @@
-{% extends "quiz_app/base.html" %}
+
+{% extends "quiz_app/base.html" %} {% block content %}
 {% load crispy_forms_tags %}
-{% block content %}
-    <div class="content-section">
-        <form method="POST">
-            {% csrf_token %}
-            <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Join Today</legend>
-                {{ form|crispy }}
-            </fieldset>
-            <div class="form-group">
-                <button class="btn btn-outline-info" type="submit">Sign Up</button>
+
+    <div class="container login-container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <div class="content-section">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <fieldset class="form-group">
+                            <legend class="border-bottom mb-4">Join Quizology Today!</legend>
+                            {{ form|crispy }}
+                        </fieldset>
+                        
+                        <div class="form-group">
+                            <button class="btn btn-score" type="submit">Sign Up</button>
+                        </div>
+                        <br>
+                    </form>
+                    <div class="border-top pt-3">
+                        <small class="text-muted">
+                            
+                            Already Have An Account? <a  href="{% url 'login' %}" class=" ml-10 btn btn-start btn-sm">Sign In</a>
+                        </small>
+                    </div>
+                </div>
+
             </div>
-        </form>
-        <div class="border-top pt-3">
-            <small class="text-muted">
-                Already Have An Account?
-                <a class="ml-2" href="{% url 'login' %}"> Sign In</a>
-            </small>
-        </div>
+            <div class="col-md-2"></div>     
+    </div>
+
     </div>
 {% endblock content %}

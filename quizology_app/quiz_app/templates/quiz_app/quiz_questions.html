@@ -1,0 +1,31 @@
+{% extends "quiz_app/base.html" %} {% block content %}
+{% load crispy_forms_tags %}
+
+    
+    <div class="content-section  quiz ">
+        <h1 class="quizologytitle">Quiz Questions</h1>
+        <form action= "{%url 'score' %}"method="POST">
+            {% csrf_token %}
+           
+        {% for question in questions %}
+            <muted class="muted">Category: {{ question.category }} </muted>
+            <h6>Question {{ forloop.counter }} of {{ questions|length }}</h6>
+            <h6>{{ question.question|safe }}</h6>
+            <input type="hidden" name="question_{{ forloop.counter0 }}_correct_answer" value="{{ question.correct_answer }}">
+            {% for option in question.incorrect_answers %}
+                <input type="radio" id="question_{{ forloop.counter0 }}_option_{{ forloop.counter }}" name="question_{{ forloop.counter0 }}" value="{{ option }}">
+                <label for="question_{{ forloop.counter0 }}_option_{{ forloop.counter }}">{{ option|safe }}</label><br>
+            {% endfor %}
+            <input type="radio" id="question_{{ forloop.counter0 }}_option_{{ forloop.counter }}" name="question_{{ forloop.counter0 }}" value="{{ question.correct_answer }}">
+            <label for="question_{{ forloop.counter0 }}_option_{{ forloop.counter }}">{{ question.correct_answer|safe }}</label><br>
+        {% endfor %}
+       
+            <div class="form-group mt-5">
+                <button class="btn btn-start btn-md" type="submit">Finish</button>
+            </div>
+        </form>
+        
+    </div>
+
+             
+{% endblock content %}

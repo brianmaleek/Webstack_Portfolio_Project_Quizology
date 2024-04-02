@@ -7,4 +7,8 @@ from . import views
 urlpatterns = [
     path("", views.home, name="quiz_app-home"),
     path("about/", views.about, name="quiz_app-about"),
-]
+    path("categories/", views.quiz_catergory_list, name="quiz_category_list"),
+    path("quiz/<int:category_id>/", views.display_quiz, name="display_quiz"),
+    path("score/", views.getUserScore, name="score"),
+    path("scoreboard/", views.leaderboard, name="scoreboard")
+ ]

@@ -9,28 +9,21 @@
                     <form method="POST">
                         {% csrf_token %}
                         <fieldset class="form-group">
-                            <legend class="border-bottom mb-4">Welcome back! Log In</legend>
+                            <legend class="border-bottom mb-4">Select Quiz Category</legend>
                             {{ form|crispy }}
                         </fieldset>
                         
                         <div class="form-group">
-                            <button class="btn btn-score" type="submit">Login</button>
-                            <small class="text-muted ms-2">
-                                <a href="{% url 'password_reset' %}">Forgot Password?</a>
-                            </small>
+                            <button class="btn btn-score btn-sm" type="submit">Start Quiz</button>
                         </div>
                         <br>
                     </form>
-                    <div class="border-top pt-3">
-                        <small class="text-muted">
-                            
-                            Need An Account? <a  href="{% url 'register' %}" class=" ml-10 btn btn-start btn-sm">Sign Up Now</a>
-                        </small>
-                    </div>
+                    
                 </div>
 
             </div>
             <div class="col-md-2"></div>     
     </div>
-
+    
+    </div>
 {% endblock content %}

@@ -15,6 +15,9 @@
                         
                         <div class="form-group">
                             <button class="btn btn-score" type="submit">Login</button>
+                            <small class="text-muted ms-2">
+                                <a href="{% url 'password_reset' %}">Forgot Password?</a>
+                            </small>
                         </div>
                         <br>
                     </form>
@@ -29,6 +32,5 @@
             </div>
             <div class="col-md-2"></div>     
     </div>
-    
-    </div>
+
 {% endblock content %}

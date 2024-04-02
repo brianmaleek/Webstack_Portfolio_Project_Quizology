@@ -15,10 +15,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('quizology_app/', include('quiz_app.urls'))
 """
 
+# Import necessary modules
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import path, include
 from user_app import views as user_views
+from django.conf import settings
+from django.conf.urls.static import static
 
 def create_urlpatterns():
     """
@@ -45,6 +48,31 @@ def create_urlpatterns():
         # User profile URL pattern
         path('profile/', user_views.profile, name='profile'),
 
+        # Password reset URL patterns using Django's built-in authentication views
+        path('password-reset/',
+            auth_views.PasswordResetView.as_view(
+                template_name='password_reset.html'
+            ),
+            name='password_reset'),
+
+        path('password-reset/done/',
+            auth_views.PasswordResetDoneView.as_view(
+                template_name='password_reset_done.html'
+            ),
+            name='password_reset_done'),
+
+        path('password-reset-confirm/<uidb64>/<token>/',
+            auth_views.PasswordResetConfirmView.as_view(
+                template_name='password_reset_confirm.html'
+            ),
+            name='password_reset_confirm'),
+
+        path('password-reset-complete/',
+            auth_views.PasswordResetCompleteView.as_view(
+                template_name='password_reset_complete.html'
+            ),
+            name='password_reset_complete'),
+
         # Include URLs from the quiz app
         path('', include('quiz_app.urls')),  # Empty string matches the root URL
     ]
@@ -53,3 +81,6 @@ def create_urlpatterns():
 
 urlpatterns = create_urlpatterns()
 
+# Add URL patterns for media files in development
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

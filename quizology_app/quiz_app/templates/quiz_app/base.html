@@ -81,8 +81,8 @@
     </header>
     <main role="main" class="container">
       <div class="row">
-        <div class="col-md-1"></div>
-        <div class="col-md-10">
+        <div class="col-md-1 col-lg-1"></div>
+        <div class="col-md-10  col-lg-10">
           {% if messages %}
             {% for message in messages %}
               <div class="alert alert-{{ message.tags }}">
@@ -92,7 +92,7 @@
           {% endif %}
           {% block content %}{% endblock %}
         </div>
-        <div class="col-md-1"></div>
+        <div class="col-md-1 col-lg-1"></div>
       </div>
     </main>
     <!-- Option 1: Bootstrap Bundle with Popper -->

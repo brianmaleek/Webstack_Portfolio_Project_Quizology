@@ -1,2 +1,7 @@
-/project
-*.pyc
+.vscode
+__pycache__
+.gitignore
+Quizology_env
+.env
+
+.gitignore

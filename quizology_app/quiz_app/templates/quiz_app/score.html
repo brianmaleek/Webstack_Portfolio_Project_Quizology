@@ -23,8 +23,13 @@
     {% if score < half_length %}
         
         <p>Oh no! You scored less than 5. Keep practicing! 💪</p>
+        <!-- "Try Again" button/link -->
+        <a href="{% url 'quiz_category_list' %}" class="btn btn-primary">Try Again</a>
     {% else %}
         <p>Well done! Keep up the good work! 🎉👏</p>
+        <!-- "Try Again" button/link -->
+        <a href="{% url 'quiz_category_list' %}" class="btn btn-primary">Take another Quiz</a>
+        <a href="{% url 'scoreboard' %}" class="btn btn-score btn-md">Check your High Scores 🏆</a>
     {% endif %}
     
 </div>

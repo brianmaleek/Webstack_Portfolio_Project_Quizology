@@ -89,7 +89,5 @@ def leaderboard(request):
     context = {
         'scores': scores
     }
-    
-    
 
     return render(request, 'quiz_app/leader_board.html', context)
